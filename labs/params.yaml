@@ -1,0 +1,8 @@
+features:
+    percentile: 75
+    data_path: course/Data
+    scale_numeric: false
+    test_size: 0.2
+    random_state: 42
+    input_data: "data/heart_disease_uci.csv"
+    output_dir: "data/processed"

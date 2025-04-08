@@ -1,0 +1,65 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/create_features.py
+    deps:
+    - path: course/Data/adult.data
+      hash: md5
+      md5: 5d7c39d7b8804f071cdd1f2a7c460872
+      size: 3974305
+    - path: course/Data/adult.test
+      hash: md5
+      md5: 366c746021dc50ad9d933d2817612fc9
+      size: 2003132
+    - path: src/create_features.py
+      hash: md5
+      md5: 9ca2294a0dea3fe8941e8cbdeeb2a78a
+      size: 2098
+    params:
+      params.yaml:
+        features.data_path: course/Data
+        features.percentile: 75
+        features.scale_numeric: false
+    outs:
+    - path: course/Data/pipeline.pkl
+      hash: md5
+      md5: a4741963fcf1977c500a60de7ddc134d
+      size: 5483
+    - path: course/Data/processed_test_data.csv
+      hash: md5
+      md5: e7a1a8f9303214753e47a8e0e3fb3379
+      size: 4407105
+    - path: course/Data/processed_train_data.csv
+      hash: md5
+      md5: 9c898633d0f549555d684120bd67f276
+      size: 8813111
+  preprocess:
+    cmd: python src/preprocessing.py
+    deps:
+    - path: data/heart_disease_uci.csv
+      hash: md5
+      md5: bde77728726675cb665f948df8ade988
+      size: 79346
+    - path: src/preprocessing.py
+      hash: md5
+      md5: 64d558ac453e8f8eb7837ffdefc7cb83
+      size: 2902
+    params:
+      params.yaml:
+        features.input_data: data/heart_disease_uci.csv
+        features.output_dir: data/processed
+        features.random_state: 42
+        features.test_size: 0.2
+    outs:
+    - path: data/processed/preprocessing_pipeline.joblib
+      hash: md5
+      md5: d15756e1bfd447907c684948ba5dd25d
+      size: 1533
+    - path: data/processed/test.csv
+      hash: md5
+      md5: d497be7e9c87a558f8c4899644344274
+      size: 37419
+    - path: data/processed/train.csv
+      hash: md5
+      md5: b5ee8d24b0098311b61f84b8a5fe1f36
+      size: 150616

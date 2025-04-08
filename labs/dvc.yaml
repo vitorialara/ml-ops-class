@@ -1,0 +1,15 @@
+stages:
+  preprocess:
+    cmd: python src/preprocessing.py
+    deps:
+      - data/heart_disease_uci.csv
+      - src/preprocessing.py
+    params:
+      - features.test_size
+      - features.random_state
+      - features.input_data
+      - features.output_dir
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - data/processed/preprocessing_pipeline.joblib
