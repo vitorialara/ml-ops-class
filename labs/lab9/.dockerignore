@@ -1,0 +1,10 @@
+*.csv
+__pycache__/
+*.pyc
+*.pkl
+.venv/
+.env
+.git/
+*.log
+*.ipynb
+.DS_Store
