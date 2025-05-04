@@ -4,7 +4,10 @@ import joblib
 import numpy as np
 import pandas as pd
 
-app = FastAPI()
+app = FastAPI(
+    title="Reddit Comment Classification API",
+    description="A ML Model that analyze comments and provides moderation classification.",
+)
 pipeline = joblib.load("reddit_model_pipeline.joblib")
 
 class TextInput(BaseModel):
